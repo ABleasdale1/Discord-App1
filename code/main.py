@@ -1,6 +1,8 @@
 import discord
 import asyncio
 
+
+
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -30,6 +32,12 @@ async def on_message(message):
 
     if message.content.startswith('<boo'):
         await message.channel.send('Your mom is a fucking whore!')
+
+    if message.content.startswith('<ping'):
+        counter = 0
+        while counter <= 1000000:
+            await message.channel.send(f'{message.author.mention} Pong!')
+            counter = counter + 1
 
 with open('fuckYou/token.txt', 'r') as file:
     token = file.read().replace('\n', '')
