@@ -28,6 +28,9 @@ async def on_message(message):
     if message.content.startswith('<hello'):
         await message.channel.send('Go fuck yourself!')
 
+    if message.content.startswith('<boo'):
+        await message.channel.send('Your mom is a fucking whore!')
+
 with open('fuckYou/token.txt', 'r') as file:
     token = file.read().replace('\n', '')
 
