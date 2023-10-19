@@ -9,7 +9,6 @@ class Bot(commands.Bot):
         intents.message_content = True
         super().__init__(command_prefix = "<", intents = intents)
         
-
     async def setup_hook(self):
         await self.tree.sync(guild = discord.Object(id = 1156650436611289239))
         print(f"Synced slash commands for {self.user}.")
@@ -34,6 +33,10 @@ async def on_ready():
 @bot.command()
 async def hello(ctx):
     await ctx.send('Go fuck yourself!')
+
+@bot.command()
+async def boo(ctx):
+    await ctx.send('Your mom is a fucking whore!')
 
 @bot.command()
 async def commands(ctx):
