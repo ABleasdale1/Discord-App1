@@ -7,8 +7,7 @@ class Bot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
         intents.message_content = True
-        help_command=None
-        super().__init__(command_prefix = "?", intents = intents)
+        super().__init__(command_prefix = "<", intents = intents)
         
 
     async def setup_hook(self):
@@ -26,15 +25,6 @@ bot = Bot()
 async def test(ctx: commands.Context):
     await ctx.defer(ephemeral = True)
     await ctx.reply("hi!")
-
-async def update_status():
-    while True:
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="you"))
-        await asyncio.sleep(5)
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="to your mom moan my name"))
-        await asyncio.sleep(5)
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="with your mom"))
-        await asyncio.sleep(5)
 
 @bot.event
 async def on_ready():
@@ -73,6 +63,17 @@ async def tag(ctx, name):
 async def create(ctx, name):
     await ctx.send(f"Created tag: {name}")
 
+#status upater for rolling status
+async def update_status():
+    while True:
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="you"))
+        await asyncio.sleep(5)
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="to your mom moan my name"))
+        await asyncio.sleep(5)
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="with your mom"))
+        await asyncio.sleep(5)
+
+#token to run, pulls token from external txt for security
 with open('fuckYou/token.txt', 'r') as file:
     token = file.read().replace('\n', '')
 
