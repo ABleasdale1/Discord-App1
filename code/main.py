@@ -3,6 +3,14 @@ from discord.ext import commands
 from discord import app_commands
 import asyncio
 
+#token to run, pulls token from external txt for security
+with open('fuckYou/security/token.txt', 'r') as file:
+    token = file.read().replace('\n', '')
+
+#guild ID to run, pulls token from external txt for security
+with open('fuckYou/security/guild.txt', 'r') as file:
+    guildID = file.read().replace('\n', '')
+
 class Bot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
@@ -10,7 +18,7 @@ class Bot(commands.Bot):
         super().__init__(command_prefix = "<", intents = intents)
         
     async def setup_hook(self):
-        await self.tree.sync(guild = discord.Object(id = 1156650436611289239))
+        await self.tree.sync(guild = discord.Object(id = guildID))
         print(f"Synced slash commands for {self.user}.")
     
     async def on_command_error(self, ctx, error):
@@ -19,7 +27,7 @@ class Bot(commands.Bot):
 bot = Bot()
 
 @bot.hybrid_command(name = "test", with_app_command = True, description = "Testing")
-@app_commands.guilds(discord.Object(id = 1156650436611289239))
+@app_commands.guilds(discord.Object(id = guildID))
 @commands.has_permissions(administrator = True)
 async def test(ctx: commands.Context):
     await ctx.defer(ephemeral = True)
@@ -76,8 +84,5 @@ async def update_status():
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="with your mom"))
         await asyncio.sleep(5)
 
-#token to run, pulls token from external txt for security
-with open('fuckYou/token.txt', 'r') as file:
-    token = file.read().replace('\n', '')
 
 bot.run(token)
