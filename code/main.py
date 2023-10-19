@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 import asyncio
+import random
 
 #token to run, pulls token from external txt for security
 with open('fuckYou/security/token.txt', 'r') as file:
@@ -47,8 +48,12 @@ async def boo(ctx):
     await ctx.send('Your mom is a fucking whore!')
 
 @bot.command()
+async def hellothere(ctx):
+    await ctx.send('General Kenobi you fool \nhttps://tenor.com/view/hello-there-general-kenobi-star-wars-grevious-gif-17774326')
+
+@bot.command()
 async def commands(ctx):
-    await ctx.send('The commands available are `hello`, `boo`, `ping`, `hello there`')
+    await ctx.send('The commands available are `hello`, `boo`, `ping`, `hellothere`')
 
 @bot.command()
 async def ping(ctx):
@@ -58,7 +63,10 @@ async def ping(ctx):
         counter = 0
         await ctx.send('Why have you done this')
         while counter <= 15:
-            await ctx.send(f'{ctx.author.mention} Fuck off!')
+            if random.random() < 0.05:
+                await ctx.send(f'{ctx.author.mention} I love you!')
+            else:
+                await ctx.send(f'{ctx.author.mention} Fuck off!')
             await asyncio.sleep(1)
             counter = counter + 1
 
