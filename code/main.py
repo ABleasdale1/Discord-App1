@@ -36,14 +36,13 @@ async def on_message(message):
         await message.channel.send('Your mom is a fucking whore!')
 
     if message.content.startswith('<ping'):
-        if message.channel == ("1156650437005561878"):
+        if message.channel.id == 1156650437005561878:
             await message.channel.send(f"Sorry {message.author.mention} I can't do that here")
         else:
             counter = 0
-            while counter <= 1000000:
+            await message.channel.send('Why have you done this')
+            while counter <= 15:
                 await message.channel.send(f'{message.author.mention} Pong!')
-                await asyncio.sleep(1)
-                await message.channel.send('Why have you done this')
                 await asyncio.sleep(1)
                 counter = counter + 1
 
