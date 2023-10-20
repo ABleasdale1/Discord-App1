@@ -52,10 +52,6 @@ async def hellothere(ctx):
     await ctx.send('General Kenobi you fool \nhttps://tenor.com/view/hello-there-general-kenobi-star-wars-grevious-gif-17774326')
 
 @bot.command()
-async def commands(ctx):
-    await ctx.send('The commands available are `hello`, `boo`, `ping`, `hellothere`')
-
-@bot.command()
 async def ping(ctx):
     if ctx.channel.id == 1156650437005561878:
             await ctx.send(f"Sorry {ctx.author.mention} I can't do that here")
@@ -85,11 +81,13 @@ async def create(ctx, name):
 #status upater for rolling status
 async def update_status():
     while True:
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="you"))
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="you fumble that girl"))
         await asyncio.sleep(5)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="to your mom moan my name"))
         await asyncio.sleep(5)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="with your mom"))
+        await asyncio.sleep(5)
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name="siege for your mom's love"))
         await asyncio.sleep(5)
 
 
