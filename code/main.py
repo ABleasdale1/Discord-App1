@@ -16,7 +16,7 @@ class Bot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
         intents.message_content = True
-        super().__init__(command_prefix = "<", intents = intents)
+        super().__init__(command_prefix = ">", intents = intents)
         
     async def setup_hook(self):
         await self.tree.sync(guild = discord.Object(id = guildID))
@@ -33,6 +33,13 @@ bot = Bot()
 async def test(ctx: commands.Context):
     await ctx.defer(ephemeral = True)
     await ctx.reply("hi!")
+
+@bot.hybrid_command(name = "sup", with_app_command = True, description = "Prompts a response")
+@app_commands.guilds(discord.Object(id = guildID))
+@commands.has_permissions(administrator = False)
+async def sup(ctx: commands.Context):
+    await ctx.defer(ephemeral = True)
+    await ctx.reply("What do you want you prick?")
 
 @bot.event
 async def on_ready():
@@ -89,6 +96,5 @@ async def update_status():
         await asyncio.sleep(5)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name="siege for your mom's love"))
         await asyncio.sleep(5)
-
 
 bot.run(token)
