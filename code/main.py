@@ -5,13 +5,25 @@ import asyncio
 import random
 
 #token to run, pulls token from external txt for security
-with open('fuckYou/security/token.txt', 'r') as file:
-    token = file.read().replace('\n', '')
+try:
+    with open('security/token.txt', 'r') as file:
+        token = file.read().replace('\n', '')
+except OSError:
+    print("Could not find token.txt, please create it in the security folder and place your bot token inside.")
+    exit()
+else:
+    print("Token loaded successfully.")
 
 #guild ID to run, pulls token from external txt for security
-with open('fuckYou/security/guild.txt', 'r') as file:
-    guildID = file.read().replace('\n', '')
-
+try:
+    with open('security/guild.txt', 'r') as file:
+        guildID = file.read().replace('\n', '')
+except OSError:
+    print("Could not find guild.txt, please create it in the security folder and place your guild ID inside.")
+    exit()
+else:
+    print("Guild ID loaded successfully.")
+    
 class Bot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
@@ -95,8 +107,6 @@ async def update_status():
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name="with your mom"))
         await asyncio.sleep(5)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name="siege for your mom's love"))
-        await asyncio.sleep(5)
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.programming, name="your new AI girlfriend"))
         await asyncio.sleep(5)
 
 bot.run(token)
