@@ -96,5 +96,7 @@ async def update_status():
         await asyncio.sleep(5)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name="siege for your mom's love"))
         await asyncio.sleep(5)
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.programming, name="your new AI girlfriend"))
+        await asyncio.sleep(5)
 
 bot.run(token)
