@@ -23,7 +23,7 @@ except OSError:
     exit()
 else:
     print("Guild ID loaded successfully.")
-    
+
 class Bot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
@@ -84,6 +84,11 @@ async def ping(ctx):
                 await ctx.send(f'{ctx.author.mention} Fuck off!')
             await asyncio.sleep(1)
             counter = counter + 1
+
+@bot.hybrid_command(fallback="freddy")
+async def freddy(ctx):
+    await ctx.send(f"Oh hi {ctx.author.global_name}\nAre you talking about the famous Freddy Fazbear?\nIn the eerie realm of animatronic entertainment, there exists a notorious establishment known as Freddy Fazbear's Pizza. Founded in the 1980s, this seemingly innocent family-friendly restaurant quickly gained a dark reputation that would echo through the years. The story behind Freddy Fazbear is one of mystery, horror, and the haunting legacy of animatronic characters.\nFreddy Fazbear, the titular character, is an anthropomorphic brown bear adorned with a bowtie and a top hat. Alongside his animatronic companions — Bonnie the Bunny, Chica the Chicken, and Foxy the Pirate Fox — Freddy graced the stage at the pizza joint, entertaining children and families with lively performances and catchy tunes. However, behind the cheerful facade lurked a grim and disturbing history.")
+    await ctx.send(f"As the legend goes, a series of unfortunate incidents unfolded at Freddy Fazbear's Pizza. Tales of missing children and mysterious disappearances began to circulate, shrouding the establishment in an aura of dread. Rumors of a malevolent force possessing the animatronics and a sinister connection between the characters and the missing children began to surface.\nThe lore deepens with the introduction of the enigmatic Purple Guy, a shadowy figure connected to the dark events at Freddy Fazbear's Pizza. It is revealed that the Purple Guy, whose true identity remains obscured, was responsible for a string of heinous acts, including the dismantling and repurposing of animatronic characters. This malevolent force added an element of psychological horror to the lore, as players and enthusiasts delved into the mysteries surrounding Freddy Fazbear's past.\nThe backstory further unfolds in various iterations of the Five Nights at Freddy's game series, each installment peeling back layers of the chilling narrative. The lore incorporates elements of paranormal activity, supernatural occurrences, and the haunting afterlife of the animatronics. The concept of 'The Bite of '87', a gruesome incident where an animatronic character supposedly attacked a human, adds another layer of horror to the Freddy Fazbear saga.\nDespite the unsettling history, Freddy Fazbears Pizza endures in the hearts and nightmares of those who dare to explore its lore. The iconic characters, the haunting atmosphere, and the enigmatic Purple Guy have cemented Freddy Fazbear as a symbol of the darker side of animatronic entertainment, captivating fans with a tale that transcends the boundaries between fiction and fear.")
 
 @bot.hybrid_command()
 async def testing(ctx):
